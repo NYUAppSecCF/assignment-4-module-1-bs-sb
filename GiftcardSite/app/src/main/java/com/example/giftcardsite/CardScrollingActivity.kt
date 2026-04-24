@@ -38,14 +38,14 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val locationPermissionCode = 2
-        var locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        if ((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
+        //val locationPermissionCode = 2
+        //var locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        /*if ((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), locationPermissionCode)
-        }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5f, this)
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        mAccel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        }*/
+        //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5f, this)
+        //sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        //mAccel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         setContentView(R.layout.activity_scrolling)
         setSupportActionBar(findViewById(R.id.toolbar))
         loggedInUser = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -61,7 +61,7 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
             }
             startActivity(intent)
         }
-        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
+        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
             GsonConverterFactory.create())
         var retrofit: Retrofit = builder.build()
         var client: CardInterface = retrofit.create(CardInterface::class.java)
@@ -98,9 +98,10 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
-    override fun onLocationChanged(location: Location) {
+    //blocked data collection and reporting
+    /*override fun onLocationChanged(location: Location) {
         var userInfoContainer = UserInfoContainer(location, null, loggedInUser?.token)
-        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
+        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
             GsonConverterFactory.create())
         var retrofit: Retrofit = builder.build()
         var client: UserInfo = retrofit.create(UserInfo::class.java)
@@ -120,12 +121,12 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
                 }
             }
         })
-    }
-
-    override fun onSensorChanged(event: SensorEvent?) {
+    }*/
+    //blocked sensor
+    /* override fun onSensorChanged(event: SensorEvent?) {
         if (event != null) {
             var userInfoContainer = UserInfoContainer(null, event.values[0].toString(), loggedInUser?.token)
-            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
+            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
                 GsonConverterFactory.create())
             var retrofit: Retrofit = builder.build()
             var client: UserInfo = retrofit.create(UserInfo::class.java)
@@ -147,6 +148,7 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
             })
         }
     }
+    */
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         return
@@ -154,14 +156,14 @@ class CardScrollingActivity : AppCompatActivity(), SensorEventListener, Location
 
     override fun onResume() {
         super.onResume()
-        mAccel?.also { accel ->
+        /*mAccel?.also { accel ->
             sensorManager.registerListener(this, accel, SensorManager.SENSOR_DELAY_NORMAL)
-        }
+        } */
     }
 
     override fun onPause() {
         super.onPause()
-        sensorManager.unregisterListener(this)
+        /*sensorManager.unregisterListener(this)*/
     }
 
 

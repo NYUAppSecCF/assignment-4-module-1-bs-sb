@@ -43,7 +43,7 @@ class ThirdFragment : Fragment() {
             var username : String = view.findViewById<EditText>(R.id.username).text.toString()
             var password : String = view.findViewById<EditText>(R.id.registerPassword).text.toString()
 
-            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
+            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
                 GsonConverterFactory.create())
             var retrofit: Retrofit = builder.build()
             var client: UserInterface = retrofit.create(UserInterface::class.java)
@@ -64,7 +64,8 @@ class ThirdFragment : Fragment() {
                     } else {
                         loggedInUser = response.body()
                         Log.d("Login Success", "Login success. Boo.")
-                        Log.d("Login Success", "Token:" + loggedInUser?.token.toString())
+                        //only login event not the token
+                        //Log.d("Login Success", "Token:" + loggedInUser?.token.toString())
                         var intent = Intent(activity, ProductScrollingActivity::class.java)
                         intent.putExtra("User", loggedInUser);
                         startActivity(intent)

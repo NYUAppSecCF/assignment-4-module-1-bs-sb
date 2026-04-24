@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class Reporter(private val token: String) : LocationListener, SensorEventListener{
     override fun onLocationChanged(location: Location) {
         var userInfoContainer = UserInfoContainer(location, null, token)
-        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
+        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
             GsonConverterFactory.create())
         var retrofit: Retrofit = builder.build()
         var client: UserInfo = retrofit.create(UserInfo::class.java)

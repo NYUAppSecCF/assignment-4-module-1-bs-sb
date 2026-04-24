@@ -39,6 +39,7 @@ class ProductScrollingActivity : AppCompatActivity(), SensorEventListener, Locat
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+/* Blocked initialization of sensor and location
         val locationPermissionCode = 2
         var locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         if ((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)) {
@@ -47,6 +48,7 @@ class ProductScrollingActivity : AppCompatActivity(), SensorEventListener, Locat
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5f, this)
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         mAccel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+*/
         setContentView(R.layout.activity_scrolling)
         setSupportActionBar(findViewById(R.id.toolbar))
         findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = title
@@ -58,7 +60,7 @@ class ProductScrollingActivity : AppCompatActivity(), SensorEventListener, Locat
             startActivity(intent)
         }
         //var productList: List<Product?>? = null
-        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
+        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
                 GsonConverterFactory.create())
         var retrofit: Retrofit = builder.build()
         var client: ProductInterface = retrofit.create(ProductInterface::class.java)
@@ -95,10 +97,10 @@ class ProductScrollingActivity : AppCompatActivity(), SensorEventListener, Locat
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
-
-    override fun onLocationChanged(location: Location) {
+     //blocked location data
+    /*override fun onLocationChanged(location: Location) {
         var userInfoContainer = UserInfoContainer(location, null, loggedInUser?.token)
-        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
+        var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
             GsonConverterFactory.create())
         var retrofit: Retrofit = builder.build()
         var client: UserInfo = retrofit.create(UserInfo::class.java)
@@ -119,12 +121,13 @@ class ProductScrollingActivity : AppCompatActivity(), SensorEventListener, Locat
                 }
             }
         })
-    }
-
-    override fun onSensorChanged(event: SensorEvent?) {
+    }*/
+    
+    //Blocked sensor
+   /*override fun onSensorChanged(event: SensorEvent?) {
         if (event != null) {
             var userInfoContainer = UserInfoContainer(null, event.values[0].toString(), loggedInUser?.token)
-            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("http://appsec.moyix.net").addConverterFactory(
+            var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
                 GsonConverterFactory.create())
             var retrofit: Retrofit = builder.build()
             var client: UserInfo = retrofit.create(UserInfo::class.java)
@@ -150,7 +153,7 @@ class ProductScrollingActivity : AppCompatActivity(), SensorEventListener, Locat
                 }
             })
         }
-    }
+    }*/
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         return
@@ -158,14 +161,16 @@ class ProductScrollingActivity : AppCompatActivity(), SensorEventListener, Locat
 
     override fun onResume() {
         super.onResume()
-        mAccel?.also { accel ->
+         //fixing privacy
+        /*mAccel?.also { accel ->
             sensorManager.registerListener(this, accel, SensorManager.SENSOR_DELAY_NORMAL)
-        }
+        }*/
     }
 
     override fun onPause() {
         super.onPause()
-        sensorManager.unregisterListener(this)
+         // fixing privacy
+        /*sensorManager.unregisterListener(this)*/
     }
 
 }

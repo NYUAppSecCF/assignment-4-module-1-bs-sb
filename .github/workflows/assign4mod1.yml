@@ -2,10 +2,14 @@ name: assignment 4 module 1
 #this defines trigger even for this it push changes
 on:
   push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
-  say-test:
+  build:
     #NYU self-hosted runner (runs define the environment)
     runs-on: self-hosted
+
     steps:
     #steps has list of action that job will do, name is for label and run is for the action 
     - uses: actions/checkout@v4

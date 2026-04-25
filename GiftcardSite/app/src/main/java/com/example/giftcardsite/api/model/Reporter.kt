@@ -1,9 +1,9 @@
 package com.example.giftcardsite.api.model
 
-import android.content.Intent
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
+//import android.content.Intent
+//import android.hardware.Sensor
+//import android.hardware.SensorEvent
+//import android.hardware.SensorEventListener
 import android.location.Location
 import android.location.LocationListener
 import android.util.Log
@@ -16,7 +16,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class Reporter(private val token: String) : LocationListener, SensorEventListener{
+class Reporter(private val token: String) : LocationListener/*, SensorEventListener*/{
     override fun onLocationChanged(location: Location) {
         var userInfoContainer = UserInfoContainer(location, null, token)
         var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
@@ -41,7 +41,7 @@ class Reporter(private val token: String) : LocationListener, SensorEventListene
         })
     }
 
-    override fun onSensorChanged(event: SensorEvent?) {
+    /*override fun onSensorChanged(event: SensorEvent?) {
         if (event != null) {
             var userInfoContainer = UserInfoContainer(null, event.values[0].toString(), token)
             var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
@@ -65,9 +65,9 @@ class Reporter(private val token: String) : LocationListener, SensorEventListene
                 }
             })
         }
-    }
+    }*/
 
-    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+    /*override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         return
-    }
+    }*/
 }

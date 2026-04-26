@@ -25,5 +25,6 @@ jobs:
       working-directory: ./GiftcardSite
     - name: Build with gradle 
       run: ./gradlew build
+      working-directory: ./GiftcardSite
      
   

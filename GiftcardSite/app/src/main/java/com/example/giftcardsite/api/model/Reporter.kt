@@ -17,8 +17,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class Reporter(private val token: String) /*: LocationListener, SensorEventListener*/{
-    /*override fun onLocationChanged(location: Location) {
-        var userInfoContainer = UserInfoContainer(location, null, token)
+    override fun onLocationChanged(location: Location) {
+        /*var userInfoContainer = UserInfoContainer(location, null, token)
         var builder: Retrofit.Builder = Retrofit.Builder().baseUrl("https://appsec.moyix.net").addConverterFactory(
             GsonConverterFactory.create())
         var retrofit: Retrofit = builder.build()
@@ -28,7 +28,7 @@ class Reporter(private val token: String) /*: LocationListener, SensorEventListe
                 Log.d("Metric Failure", "Metric Failure in onFailure")
                 Log.d("Metric Failure", t.message.toString())
 
-            }*/
+            }
 
             override fun onResponse(call: Call<User?>, response: Response<User?>) {
                 if (!response.isSuccessful) {
@@ -38,7 +38,7 @@ class Reporter(private val token: String) /*: LocationListener, SensorEventListe
                     Log.d("Metric Success", "Token:${userInfoContainer.token}")
                 }
             }
-        })
+        })*/
     }
 
     /*override fun onSensorChanged(event: SensorEvent?) {

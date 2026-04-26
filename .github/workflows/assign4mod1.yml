@@ -7,8 +7,8 @@ on:
     branches: [ main ]
 jobs:
   build:
-    #NYU self-hosted runner (runs define the environment)
-    runs-on: self-hosted
+    #running on standard github runner as NYU self-hosted runner (runs define the environment) is havig issue
+    runs-on: ubuntu-latest
 
     steps:
     #steps has list of action that job will do, name is for label and run is for the action 

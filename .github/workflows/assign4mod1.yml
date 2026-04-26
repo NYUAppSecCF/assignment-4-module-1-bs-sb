@@ -25,6 +25,8 @@ jobs:
     
     - name: Execution Grant permission for gradlew
       run: chmod +x gradlew
+      working-directory: ./GiftcardSite
     - name: Build with gradle 
       run: ./gradlew build
+      working-directory: ./GiftcardSite
   

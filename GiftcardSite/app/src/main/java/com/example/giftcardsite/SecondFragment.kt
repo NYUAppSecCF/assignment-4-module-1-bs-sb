@@ -68,7 +68,7 @@ class SecondFragment : Fragment() {
                         Log.d("Register Success", "Token:" + loggedInUser?.token.toString())
                         //var intent = Intent(Intent.ACTION_VIEW)
                         //changed to explict intent
-                        var intent = Intent(activity, TargetActivity::class.java)
+                        var intent = Intent(activity, ProductScrollingActivity::class.java)
                         intent.type = "text/giftcards_browse"
                         intent.data = Uri.parse("https://appsec.moyix.net/api/index")
                         intent.putExtra("User", loggedInUser);

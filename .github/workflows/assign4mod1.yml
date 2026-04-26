@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     #running on standard github runner as NYU self-hosted runner (runs define the environment) is havig issue
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     #steps has list of action that job will do, name is for label and run is for the action 
@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
         cache: gradle
     - name: Android SDK setup
-      uses: android-actions/setup-adroid@v3
+      uses: android-actions/setup-android@v2
     
     - name: Execution Grant permission for gradlew
       run: chmod +x gradlew

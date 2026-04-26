@@ -2,9 +2,6 @@ name: assignment 4 module 1
 #this defines trigger even for this it push changes
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
 jobs:
   build:
     #running on standard github runner as NYU self-hosted runner (runs define the environment) is havig issue
@@ -25,8 +22,8 @@ jobs:
     
     - name: Execution Grant permission for gradlew
       run: chmod +x gradlew
-      working-directory: ./GiftcardSite
+      #working-directory: ./GiftcardSite
     - name: Build with gradle 
       run: ./gradlew build
-      working-directory: ./GiftcardSite
+      #working-directory: ./GiftcardSite
   

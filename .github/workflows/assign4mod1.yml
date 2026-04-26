@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
         cache: gradle
     - name: Android SDK setup
-      uses: android-actions/setup-adroid@v2
+      uses: android-actions/setup-adroid@v3
     
     - name: Execution Grant permission for gradlew
       run: chmod +x gradlew
